@@ -9,7 +9,7 @@ local config = {
 
   -- Set colorscheme to use
   -- colorscheme = "catppuccin",
-    colorscheme = "tokyonight-night",
+  colorscheme = "tokyonight-night",
   -- colorscheme = "default_theme",
 
   lsp = {
@@ -23,7 +23,7 @@ local config = {
     skip_setup = { "rust_analyzer" },
   },
 
- -- Configure plugins
+  -- Configure plugins
   plugins = {
     init = {
       {
@@ -48,7 +48,7 @@ local config = {
             server = astronvim.lsp.server_settings "rust_analyzer", -- get the server settings and built in capabilities/on_attach
           }
         end,
-      }, 
+      },
     },
     heirline = function(config)
       -- the first element of the default configuration table is the statusline
