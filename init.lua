@@ -14,13 +14,29 @@ local config = {
 
   lsp = {
     servers = {
-      -- "rust_analyzer",
-      "pyright",
-      "ansiblels",
-      "yamlls",
+      "rust_analyzer",
       "gopls",
     },
     skip_setup = { "rust_analyzer" },
+    ["server-settings"] = {
+      ansiblels = {
+        python = {
+          activationScript = "$(pipenv --venv)/bin/activate"
+        }
+      },
+      -- example for addings schemas to yamlls
+      -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
+      --   settings = {
+      --     yaml = {
+      --       schemas = {
+      --         ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+      --         ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+      --         ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+      --       },
+      --     },
+      --   },
+      -- },
+    },
   },
 
   -- Configure plugins
@@ -31,13 +47,6 @@ local config = {
         as = "tokionight",
         config = function()
           require("tokyonight").setup {}
-        end,
-      },
-      {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-          require("catppuccin").setup {}
         end,
       },
       {
@@ -73,6 +82,19 @@ local config = {
       -- return the final configuration table
       return config
     end,
+    -- use mason-lspconfig to configure LSP installations
+    ["mason-lspconfig"] = {
+      ensure_installed = {
+        "sumneko_lua",
+        "yamlls",
+        "ansiblels",
+        "pyright",
+      },
+    },
+    -- use mason-tool-installer to configure DAP/Formatters/Linter installation
+    -- ["mason-tool-installer"] = {
+    --   ensure_installed = { "prettier", "stylua" },
+    -- },
   },
 }
 
