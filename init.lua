@@ -42,8 +42,7 @@ local config = {
   plugins = {
     init = {
       "folke/tokyonight.nvim",
-      {
-        "simrat39/rust-tools.nvim",
+      ["simrat39/rust-tools.nvim"] = {
         after = "mason-lspconfig.nvim", -- make sure to load after mason-lspconfig
         config = function()
           require("rust-tools").setup {
