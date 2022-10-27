@@ -8,7 +8,6 @@ local config = {
   },
 
   -- Set colorscheme to use
-  -- colorscheme = "catppuccin",
   colorscheme = "tokyonight-night",
   -- colorscheme = "default_theme",
 
@@ -42,13 +41,7 @@ local config = {
   -- Configure plugins
   plugins = {
     init = {
-      {
-        "folke/tokyonight.nvim",
-        as = "tokionight",
-        config = function()
-          require("tokyonight").setup {}
-        end,
-      },
+      "folke/tokyonight.nvim",
       {
         "simrat39/rust-tools.nvim",
         after = "mason-lspconfig.nvim", -- make sure to load after mason-lspconfig
